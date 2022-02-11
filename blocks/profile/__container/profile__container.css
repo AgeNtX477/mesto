@@ -1,0 +1,16 @@
+.profile__container {
+    display: flex;
+}
+
+@media all and (max-width: 768px) {
+    .profile__container {
+        gap: 5px
+    }
+}
+
+@media all and (max-width: 756px) {
+    .profile__container {
+        text-align: center;
+        justify-content: center;
+    }
+}
