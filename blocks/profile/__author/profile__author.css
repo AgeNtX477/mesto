@@ -6,9 +6,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    text-align: end;
     margin: 0 18px 16px 0;
-    text-align: start;
 }
 
 @media all and (max-width: 928px) {
