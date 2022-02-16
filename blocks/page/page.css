@@ -5,4 +5,5 @@
     font-family: 'Inter', Arial, sans-serif;
     text-rendering: optimizeLegibility;
     margin: 0 auto;
+    z-index: 100;
 }

@@ -15,12 +15,12 @@
     .profile__author {
         font-size: 27px;
         line-height: 1.2;
-        text-align: center;
     }
 }
 
 @media all and (max-width: 756px) {
     .profile__author {
         margin: 0 10px 14px 0;
+        padding-top: 22.5px;
     }
 }
