@@ -1,5 +1,5 @@
 let editPopupButton = document.querySelector('.profile__edit-button');
-let editPopup = document.querySelector('.popup__opened');
+let editPopup = document.querySelector('.popup_opened');
 let closeEditPopup = document.querySelector('.popup__edit-close');
 let formELement = document.querySelector('.popup__input'); // объявляем форму popup
 let author = formELement.querySelector('.popup__input_author');
