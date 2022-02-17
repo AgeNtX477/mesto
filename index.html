@@ -22,7 +22,7 @@
 
             <section class="profile">
 
-                <img src="./images/anakin-avatar.jpg" class="profile__avatar" alt="аватар_профиля">
+                <img src="./images/anakin-avatar.jpg" class="profile__avatar" alt="Скайуокер">
 
                 <div class="profile__info">
                     <div class="profile__container">
@@ -39,53 +39,53 @@
 
             <section class="element">
 
-                <div class="element__box">
-                    <img src="./images/alderaan-hope.jpg" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/alderaan-hope.jpg" class="element__image" alt="Альдеран">
                     <div class="element__stuff">
                         <h2 class="element__title">Альдеран</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
-                <div class="element__box">
-                    <img src="./images/jakku.jpg" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/jakku.jpg" class="element__image" alt="Джакку">
                     <div class="element__stuff">
                         <h2 class="element__title">Джакку</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
-                <div class="element__box">
-                    <img src="./images/nabu.jpg" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/nabu.jpg" class="element__image" alt="Набу">
                     <div class="element__stuff">
                         <h2 class="element__title">Набу</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
-                <div class="element__box">
-                    <img src="./images/korusant.jpg" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/korusant.jpg" class="element__image" alt="Корусант">
                     <div class="element__stuff">
                         <h2 class="element__title">Корусант</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
-                <div class="element__box">
-                    <img src="./images/skarif.jpg" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/skarif.jpg" class="element__image" alt="Скариф">
                     <div class="element__stuff">
                         <h2 class="element__title">Скариф</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
-                <div class="element__box">
-                    <img src="./images/mustafar.png" class="element__image" alt="Загруженная_картинка">
+                <article class="element__box">
+                    <img src="./images/mustafar.png" class="element__image" alt="Мустафар">
                     <div class="element__stuff">
                         <h2 class="element__title">Мустафар</h2>
-                        <button class="element__like-button"></button>
+                        <button class="element__like-button" type="button"></button>
                     </div>
-                </div>
+                </article>
 
             </section>
 
@@ -97,17 +97,17 @@
 
         </footer>
 
-        <div class="popup popup_opened">
+        <div class="popup">
             <div class="popup__container">
-                <h2 class="popup__heading-edit-button">Редактировать профиль</h2>
-                <form class="popup__input">
-                    <input type="text" placeholder="Имя" class="popup__input popup__input_author">
-                    <input type="text" placeholder="О себе" class="popup__input popup__input_description">
-                    <button class="popup__edit-save-button">
+                <h2 class="popup__heading">Редактировать профиль</h2>
+                <form name="edit-form" class="popup__form">
+                    <input type="text" placeholder="Имя" class="popup__input popup__input_type_author">
+                    <input type="text" placeholder="О себе" class="popup__input popup__input_type_description">
+                    <button class="popup__edit-save-button" type="submit">
                       Сохранить
                     </button>
                 </form>
-                <button class="popup__edit-close"></button>
+                <button class="popup__edit-close" type="button"></button>
             </div>
         </div>
 

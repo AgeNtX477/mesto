@@ -1,4 +1,4 @@
-.popup__input_description {
+.popup__input_type_description {
     position: absolute;
     left: 36px;
     top: 168px;
@@ -8,7 +8,7 @@
 }
 
 @media all and (max-width: 578px) {
-    .popup__input_description {
+    .popup__input_type_description {
         left: 22px;
     }
 }
