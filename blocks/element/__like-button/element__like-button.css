@@ -2,9 +2,9 @@
     width: 22px;
     height: 19px;
     border: none;
+    background-color: transparent;
     background-image: url(../../../images/like-button.svg);
     background-repeat: no-repeat;
-    background-color: transparent;
     margin-right: 30px;
     transition: .3s;
     cursor: pointer;
