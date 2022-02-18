@@ -4,7 +4,7 @@
     border: none;
     background-image: url(../../../images/like-button.svg);
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-color: transparent;
     margin-right: 30px;
     transition: .3s;
     cursor: pointer;
