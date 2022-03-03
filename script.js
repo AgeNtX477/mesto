@@ -41,13 +41,13 @@ const closeAddPopupButton = addPopup.querySelector('.popup__close-button_place_a
 const addPopupButton = document.querySelector('.profile__add-button'); // кнопка открыть add popup.
 const formELementPlaceAdd = document.querySelector('.popup__form_place_edit'); // форма отправки submit popup для add.
 
-function setEventListeners(itemElement) { //функция слушателя событый
+function setEventListeners(itemElement) { //функция слушателя событый.
     itemElement.querySelector('.element__del-button').addEventListener('click', handleDelete); // удаление элемента
     itemElement.querySelector('.element__like-button').addEventListener('click', handleLike); // кнопка лайк
 }
 
 
-function renderItem(title, image) { // функция добавления карточек по умолчанию
+function renderItem(title, image) { // функция добавления карточек по умолчанию.
     const itemElement = templateElement.querySelector('.element__box').cloneNode(true);
     const elementTitle = itemElement.querySelector('.element__title');
     const elementImage = itemElement.querySelector('.element__image');
@@ -57,22 +57,22 @@ function renderItem(title, image) { // функция добавления ка�
     return itemElement;
 };
 
-items.forEach(function(item) {
+items.forEach(function(item) { // распределения массива.
     const itemElement = renderItem(item.name, item.link);
     elementList.appendChild(itemElement);
 });
 
-function handleDelete(event) {
+function handleDelete(event) { // функция удаления карточки.
     const itemElement = event.target.closest('.element__box');
     itemElement.remove();
 }
 
-function handleLike(event) {
+function handleLike(event) { // функция поставить лайк.
     const itemElement = event.target.classList.toggle('element__like-button_type_active');
     return itemElement;
 }
 
-function openProfilePopup() { // открываем popup edit
+function openProfilePopup() { // открываем popup edit.
     author.value = profileAuthor.textContent; // передаем исходное значение в input.
     description.value = profileDescription.textContent; // передаем исходное значение в input.
     editPopup.classList.add(popupOpened);
