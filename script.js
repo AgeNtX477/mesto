@@ -42,10 +42,10 @@ const addPopupButton = document.querySelector('.profile__add-button'); // кно
 const formELementPlaceAdd = document.querySelector('.popup__form_place_edit'); // форма отправки submit popup для add.
 
 function setEventListeners(itemElement) { //функция слушателя событый.
-    itemElement.querySelector('.element__del-button').addEventListener('click', handleDelete); // удаление элемента
-    itemElement.querySelector('.element__like-button').addEventListener('click', handleLike); // кнопка лайк
+    itemElement.querySelector('.element__del-button').addEventListener('click', handleDelete); // удаление элемента.
+    itemElement.querySelector('.element__like-button').addEventListener('click', handleLike); // кнопка лайк.
+    // itemElement.querySelector('.element__image').addEventListener('click', handleView); // полноразмерный просмотр фото.
 }
-
 
 function renderItem(title, image) { // функция добавления карточек по умолчанию.
     const itemElement = templateElement.querySelector('.element__box').cloneNode(true);
@@ -68,9 +68,10 @@ function handleDelete(event) { // функция удаления карточк
 }
 
 function handleLike(event) { // функция поставить лайк.
-    const itemElement = event.target.classList.toggle('element__like-button_type_active');
-    return itemElement;
+    event.target.classList.toggle('element__like-button_type_active');
 }
+
+// function handleView(event)
 
 function openProfilePopup() { // открываем popup edit.
     author.value = profileAuthor.textContent; // передаем исходное значение в input.
