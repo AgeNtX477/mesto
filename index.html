@@ -27,67 +27,17 @@
                 <div class="profile__info">
                     <div class="profile__container">
                         <h1 class="profile__author">Энакин Скайуокер</h1>
-                        <button class="profile__edit-button"></button>
+                        <button class="profile__edit-button" type="button"></button>
                     </div>
                     <h2 class="profile__description">Лучший пилот галактики</h2>
 
                 </div>
 
-                <button class="profile__add-button"></button>
+                <button class="profile__add-button" type="button"></button>
 
             </section>
 
-            <section class="element">
-
-                <article class="element__box">
-                    <img src="./images/alderaan-hope.jpg" class="element__image" alt="Альдеран">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Альдеран</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-                <article class="element__box">
-                    <img src="./images/jakku.jpg" class="element__image" alt="Джакку">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Джакку</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-                <article class="element__box">
-                    <img src="./images/nabu.jpg" class="element__image" alt="Набу">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Набу</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-                <article class="element__box">
-                    <img src="./images/korusant.jpg" class="element__image" alt="Корусант">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Корусант</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-                <article class="element__box">
-                    <img src="./images/skarif.jpg" class="element__image" alt="Скариф">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Скариф</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-                <article class="element__box">
-                    <img src="./images/mustafar.png" class="element__image" alt="Мустафар">
-                    <div class="element__stuff">
-                        <h2 class="element__title">Мустафар</h2>
-                        <button class="element__like-button" type="button"></button>
-                    </div>
-                </article>
-
-            </section>
+            <section class="element"></section>
 
         </main>
 
@@ -96,20 +46,45 @@
             <p class="footer__copyright">2022 Mesto Russia</p>
 
         </footer>
-
-        <div class="popup">
+        <!-- попап редактирование профиля -->
+        <div class="popup popup_profile-edit">
             <div class="popup__container">
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <form name="edit-form" class="popup__form">
+                <form name="edit-form" class="popup__form popup__form_place_edit">
                     <input type="text" placeholder="Имя" class="popup__input popup__input_type_author">
                     <input type="text" placeholder="О себе" class="popup__input popup__input_type_description">
-                    <button class="popup__edit-save-button" type="submit">
+                    <button class="popup__submit popup__submit_place_edit" type="submit">
                       Сохранить
                     </button>
                 </form>
-                <button class="popup__edit-close" type="button"></button>
+                <button class="popup__close-button popup__close-button_place_edit" type="button"></button>
             </div>
         </div>
+        <!-- попап добавления "новое место" -->
+        <div class="popup popup_img-add">
+            <div class="popup__container">
+                <h2 class="popup__heading">Новое место</h2>
+                <form name="add-form" class="popup__form popup__form_place_add">
+                    <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name">
+                    <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img-src">
+                    <button class="popup__submit popup__submit_place_add" type="submit">
+                      Создать
+                    </button>
+                </form>
+                <button class="popup__close-button popup__close-button_place_add" type="button"></button>
+            </div>
+        </div>
+        <!-- template element рендеринг карточек -->
+        <template id="elements-Box-Content">
+            <article class="element__box">
+                <img src="#" class="element__image" alt="#">
+                <div class="element__stuff">
+                    <h2 class="element__title"></h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+                <button class="element__del-button" type="button"></button>
+            </article>
+        </template>
 
     </div>
     <!-- end of page -->
@@ -117,3 +92,60 @@
 </body>
 
 </html>
+
+
+<!-- изначальная разметка секции Element
+                   <article class="element__box">
+                    <img src="./images/alderaan-hope.jpg" class="element__image" alt="Альдеран">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Альдеран</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+
+                <article class="element__box">
+                    <img src="./images/jakku.jpg" class="element__image" alt="Джакку">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Джакку</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+
+                <article class="element__box">
+                    <img src="./images/nabu.jpg" class="element__image" alt="Набу">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Набу</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+
+                <article class="element__box">
+                    <img src="./images/korusant.jpg" class="element__image" alt="Корусант">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Корусант</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+
+                <article class="element__box">
+                    <img src="./images/skarif.jpg" class="element__image" alt="Скариф">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Скариф</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+
+                <article class="element__box">
+                    <img src="./images/mustafar.png" class="element__image" alt="Мустафар">
+                    <div class="element__stuff">
+                        <h2 class="element__title">Мустафар</h2>
+                        <button class="element__like-button" type="button"></button>
+                    </div>
+                    <button class="element__del-button" type="button"></button>
+                </article>
+ -->

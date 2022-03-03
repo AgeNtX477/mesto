@@ -1,4 +1,4 @@
-.popup__edit-close {
+.popup__close-button {
     position: absolute;
     background-color: transparent;
     width: 32px;
@@ -13,12 +13,12 @@
     cursor: pointer;
 }
 
-.popup__edit-close:hover {
+.popup__close-button:hover {
     opacity: .6;
 }
 
 @media all and (max-width: 578px) {
-    .popup__edit-close {
+    .popup__close-button {
         width: 20px;
         height: 20px;
         top: -30px;

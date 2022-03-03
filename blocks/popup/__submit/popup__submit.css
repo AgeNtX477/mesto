@@ -1,4 +1,4 @@
-.popup__edit-save-button {
+.popup__submit {
     width: 358px;
     height: 50px;
     background-color: #000000;
@@ -16,12 +16,12 @@
     cursor: pointer;
 }
 
-.popup__edit-save-button:hover {
+.popup__submit:hover {
     opacity: 0.8;
 }
 
 @media all and (max-width: 578px) {
-    .popup__edit-save-button {
+    .popup__submit {
         width: 238px;
         height: 46px;
         bottom: 25px;

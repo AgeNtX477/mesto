@@ -1,4 +1,5 @@
 .element__box {
+    position: relative;
     width: 282px;
     height: 361px;
     box-sizing: border-box;
