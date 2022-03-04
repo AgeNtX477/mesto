@@ -42,3 +42,9 @@
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__close-button/_place/popup__close-button_place_edit.css);
 @import url(../blocks/popup/__close-button/_place/popup__close-button_place_add.css);
+@import url(../blocks/popup/_img-zoomed/popup_img-zoomed.css);
+@import url(../blocks/popup/__zoom-container/popup__zoom-container.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/__close-button/_place/popup__close-button_place_img-zoomed.css);

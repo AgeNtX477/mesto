@@ -47,7 +47,7 @@ function setEventListeners(itemElement) { //функция слушателя с
     // itemElement.querySelector('.element__image').addEventListener('click', handleView); // полноразмерный просмотр фото.
 }
 
-function renderItem(title, image) { // функция добавления карточек по умолчанию.
+function renderItem(title, image) { // функция рендеринга карточек по умолчанию.
     const itemElement = templateElement.querySelector('.element__box').cloneNode(true);
     const elementTitle = itemElement.querySelector('.element__title');
     const elementImage = itemElement.querySelector('.element__image');
@@ -57,7 +57,7 @@ function renderItem(title, image) { // функция добавления ка�
     return itemElement;
 };
 
-items.forEach(function(item) { // распределения массива.
+items.forEach(function(item) { // распределение массива.
     const itemElement = renderItem(item.name, item.link);
     elementList.appendChild(itemElement);
 });

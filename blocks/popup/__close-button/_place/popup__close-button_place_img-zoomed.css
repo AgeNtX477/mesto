@@ -1,10 +1,10 @@
-.popup__close-button_place_edit {
+.popup__close-button_place_img-zoomed {
     position: absolute;
     background-color: transparent;
     width: 32px;
     height: 32px;
-    top: -40px;
-    right: -40px;
+    top: -25px;
+    right: 0;
     background-image: url(../../../../images/close-button.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,15 +13,15 @@
     cursor: pointer;
 }
 
-.popup__close-button_place_edit:hover {
+.popup__close-button_place_img-zoomed:hover {
     opacity: .6;
 }
 
 @media all and (max-width: 578px) {
-    .popup__close-button_place_edit {
+    .popup__close-button_place_img-zoomed {
         width: 20px;
         height: 20px;
-        top: -30px;
-        right: 0px;
+        top: -16px;
+        right: 38px;
     }
 }
