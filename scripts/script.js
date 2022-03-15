@@ -48,6 +48,7 @@ const currentProfileAbout = document.querySelector('.profile__description'); // 
 const cardsContainer = document.querySelector('.element'); // родитель всех карточек в верстке
 const templateElement = document.getElementById('elements-Box-Content').content; // находим весь тег template
 const card = document.querySelector('.element__box'); // находим одну карточку в теге template
+const inputs = document.querySelector('.popup__input'); // глобальная константа для всех INPUT
 
 function openPopupGlobal(popupGlobal) { // глобальная функция открытия всех POPUP
     popupGlobal.classList.add('popup_opened');
@@ -62,7 +63,7 @@ function sendCurrentValue() { // функция передачи текущег�
     inputAboutProfileEdit.value = currentProfileAbout.textContent;
 }
 
-function formSubmitPlaceEdit(evt) { // функция SUMBIT для POPUP редактирования профиля
+function handleSubmitformPlaceEdit(evt) { // функция SUMBIT для POPUP редактирования профиля
     evt.preventDefault();
     currentProfileName.textContent = inputNameProfileEdit.value;
     currentProfileAbout.textContent = inputAboutProfileEdit.value;
@@ -110,13 +111,15 @@ function handleView(event) { // функция открытия POPUP полно
     popupZoomedImage.alt = zoomed.alt;
 };
 
-function formSumbitPlaceAdd(evt) { // функция SUMBIT для POPUP добавления нового места
+function handleSumbitFormPlaceAdd(evt) { // функция SUMBIT для POPUP добавления нового места
     evt.preventDefault();
     renderCard({
         name: inputPlaceNameAddNewPlace.value,
         link: inputLinkAddNewPlace.value
     }, cardsContainer);
     closePopupGlobal(popupAddNewPlace);
+    inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
+    inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
 };
 
 buttonProfileEdit.addEventListener('click', function() { // слушатель кнопки открытия POPUP редактирования профиля
@@ -141,6 +144,6 @@ buttonCloseZoomedImagePopup.addEventListener('click', function() { // слуша
     closePopupGlobal(popupZoomed);
 });
 
-submitFormProfileEditPopup.addEventListener('submit', formSubmitPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
+submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
 
-submitFormAddNewPlacePopup.addEventListener('submit', formSumbitPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места
+submitFormAddNewPlacePopup.addEventListener('submit', handleSumbitFormPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места
