@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Место Россия</title>
+    <title>Место</title>
 </head>
 
 <body class="body">
@@ -51,12 +51,16 @@
         <div class="popup popup_profile-edit">
             <div class="popup__container">
                 <h2 class="popup__heading">Редактировать профиль</h2>
-                <form name="edit-form" class="popup__form popup__form_place_edit">
-                    <input type="text" placeholder="Имя" class="popup__input popup__input_type_author">
-                    <input type="text" placeholder="О себе" class="popup__input popup__input_type_description">
-                    <button class="popup__submit popup__submit_place_edit" type="submit">
+                <form name="edit-form" class="popup__form popup__form_place_edit" novalidate>
+                    <fieldset class="popup__form-set">
+                        <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_type_author" minlength="2" maxlength="40" required>
+                        <span class="popup__error popup__error_place_name" id="name-error"></span>
+                        <input type="text" name="about" placeholder="О себе" class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
+                        <span class="popup__error popup__error_place_about" id="about-error"></span>
+                        <button class="popup__submit popup__submit_place_edit" type="submit">
                       Сохранить
                     </button>
+                    </fieldset>
                 </form>
                 <button class="popup__close-button popup__close-button_place_edit" type="button"></button>
             </div>
@@ -65,12 +69,16 @@
         <div class="popup popup_img-add">
             <div class="popup__container">
                 <h2 class="popup__heading">Новое место</h2>
-                <form name="add-form" class="popup__form popup__form_place_add">
-                    <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name">
-                    <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img-src">
-                    <button class="popup__submit popup__submit_place_add" type="submit">
+                <form name="add-form" class="popup__form popup__form_place_add" novalidate>
+                    <fieldset class="popup__form-set">
+                        <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_place-name" minlength="2" maxlength="30" required>
+                        <span class="popup__error popup__error_place_place" id="place-error"></span>
+                        <input type="url" name="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_img-src" required>
+                        <span class="popup__error popup__error_place_url" id="url-error"></span>
+                        <button class="popup__submit popup__submit_place_add" type="submit">
                       Создать
                     </button>
+                    </fieldset>
                 </form>
                 <button class="popup__close-button popup__close-button_place_add" type="button"></button>
             </div>
@@ -99,7 +107,10 @@
 
     </div>
     <!-- border of page -->
+    <script src="./scripts/items.js"></script>
+    <script src="./scripts/constants.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

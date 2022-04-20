@@ -9,7 +9,7 @@
     line-height: 1.21;
     text-align: center;
     position: absolute;
-    bottom: 37px;
+    bottom: 27px;
     left: 36px;
     border-radius: 2px;
     transition: .3s;
@@ -24,7 +24,7 @@
     .popup__submit {
         width: 238px;
         height: 46px;
-        bottom: 25px;
+        bottom: 14px;
         left: 22px;
         font-size: 14px;
     }

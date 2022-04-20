@@ -1,55 +1,3 @@
-const items = [{ // базовый массив 
-        name: 'Альдеран',
-        link: './images/alderaan-hope.jpg'
-    },
-    {
-        name: 'Джакку',
-        link: './images/jakku.jpg'
-    },
-    {
-        name: 'Набу',
-        link: './images/nabu.jpg'
-    },
-    {
-        name: 'Корусант',
-        link: './images/korusant.jpg'
-    },
-    {
-        name: 'Скариф',
-        link: './images/skarif.jpg'
-    },
-    {
-        name: 'Мустафар',
-        link: './images/mustafar.png'
-    }
-];
-const popupGlobal = document.querySelector('.popup'); // Блок POPUP (ГЛОБАЛЬНЫЙ)
-const popupProfileEdit = document.querySelector('.popup_profile-edit'); // POPUP редактирования профиля
-const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля
-const inputNameProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_author'); // input форма SUBMIT для POPUP редактирования профиля (имя)
-const inputAboutProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_description'); // input форма SUBMIT для POPUP редактирования профиля (о себе)
-const popupAddNewPlace = document.querySelector('.popup_img-add'); // POPUP добавления нового места
-const submitFormAddNewPlacePopup = document.querySelector('.popup__form_place_add'); // форма SUBMIT для POPUP добавления нового места
-const inputPlaceNameAddNewPlace = submitFormAddNewPlacePopup.querySelector('.popup__input_type_place-name'); // input форма SUBMIT для POPUP добавления нового места (наименование места)
-const inputLinkAddNewPlace = submitFormAddNewPlacePopup.querySelector('.popup__input_type_img-src'); // input форма SUBMIT для POPUP добавления нового места (ссылка на картинку)
-const popupZoomed = document.querySelector('.popup_img-zoomed'); // POPUP полноразмерной картинки
-const popupZoomedCaption = popupZoomed.querySelector('.popup__caption');
-const popupZoomedImage = popupZoomed.querySelector('.popup__image');
-const buttonProfileEdit = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
-const buttonAddNewPlace = document.querySelector('.profile__add-button'); // кнопка добавления нового места
-const buttonLike = document.querySelector('.element__like-button'); // кнопка лайка карточки
-const buttonDelete = document.querySelector('.element__del-button'); // кнопка удаления карточки
-const buttonGlobalClosePopup = document.querySelector('.popup__close-button'); // кнопка закрыть POPUP глобальная
-const buttonCloseProfileEditPopup = popupProfileEdit.querySelector('.popup__close-button_place_edit'); // кнопка закрыть POPUP редактирования профиля
-const buttonCloseAddNewPlacePopup = popupAddNewPlace.querySelector('.popup__close-button_place_add'); // кнопка закрыть POPUP добавления нового места
-const buttonCloseZoomedImagePopup = document.querySelector('.popup__close-button_place_img-zoomed'); // кнопка закрыть POPUP полноразмерной картинки
-const currentProfileName = document.querySelector('.profile__author'); // находим отображение на странице имя профиля
-const currentProfileAbout = document.querySelector('.profile__description'); // находим отображение на странице описания имени профиля
-const cardsContainer = document.querySelector('.element'); // родитель всех карточек в верстке
-const templateElement = document.getElementById('elements-Box-Content').content; // находим весь тег template
-const card = document.querySelector('.element__box'); // находим одну карточку в теге template
-const inputs = document.querySelector('.popup__input'); // глобальная константа для всех INPUT
-
 function openPopupGlobal(popupGlobal) { // глобальная функция открытия всех POPUP
     popupGlobal.classList.add('popup_opened');
 };
@@ -147,3 +95,9 @@ buttonCloseZoomedImagePopup.addEventListener('click', function() { // слуша
 submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
 
 submitFormAddNewPlacePopup.addEventListener('submit', handleSumbitFormPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места
+
+/*  улучшаем код:
+1. сделать общую функцию закрытия.
+2. сделать массив с начала до конца.
+3. сделать закрытие попапов по нажатию вне области попапа + кнопка ESC. 
+*/
