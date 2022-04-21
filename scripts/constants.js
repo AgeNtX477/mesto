@@ -1,4 +1,7 @@
 const ESC_BUTTON = 'Escape';
+const overlayPlaceProfileEdit = document.querySelector('.popup__overlay_place_profile-edit');
+const overlayPlaceAdd = document.querySelector('.popup__overlay_place_add');
+const overlayPlaceImgZoomed = document.querySelector('.popup__overlay_place_img-zoomed');
 const popupGlobal = document.querySelector('.popup'); // Блок POPUP (ГЛОБАЛЬНЫЙ)
 const popupProfileEdit = document.querySelector('.popup_profile-edit'); // POPUP редактирования профиля
 const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля
