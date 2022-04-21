@@ -3,33 +3,31 @@ const validateObj = {
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit',
     inactiveButtonClass: 'popup__submit_disabled',
-    inputErrorClass: 'popup___error', // для чего это нужно?
+    inputErrorClass: 'popup___error', // нужно по чек листу, но не используется по коду.
     errorClass: 'popup__error_visible'
 };
 
-const showInputError = (formSelector, inputSelector, errorClass) => {
-    const inputName = inputSelector.getAttribute('name')
-    const errorPlace = formSelector.getElementById(`${inputName}-error`)
-    errorPlace.textContent = input.validationMessage
-    errorPlace.classList.add(errorClass)
+const showInputError = (formSelector, inputSelector, errorClass) => { // функция показывающая текст валидатора, если validity false.
+    const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
+    errorElement.textContent = errorClass;
+    errorElement.classList.add(errorClass);
 };
 
-const hideInputError = (formSelector, inputSelector, errorClass) => {
-    const inputName = inputSelector.getAttribute('name')
-    const errorPlace = formSelector.getElementById(`${inputName}-error`)
-    errorPlace.textContent = input.validationMessage
-    errorPlace.classList.remove(errorClass)
+const hideInputError = (formSelector, inputSelector, errorClass) => { // функция скрывающая текст валидатора, если validity true.
+    const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
+    errorElement.classList.remove(errorClass);
+    errorElement.textContent = '';
 };
 
-const checkInputValidity = (formSelector, inputSelector) => {
-    if (input.validity.valid) {
-        hideInputError(formSelector, inputSelector)
+const checkInputValidity = (formSelector, inputSelector) => { // функция которая в зависимости от значения свойства validity применяет одну из функций (showInputError) (hideInputError).
+    if (!input.validity.valid) {
+        showInputError(formSelector, inputSelector.validationMessage)
     } else {
-        showInputError(formSelector, inputSelector)
+        hideInputError(formSelector, inputSelector)
     }
 };
 
-const setEventListeners = (formSelector) => {
+const setEventListeners = (formSelector) => { // обработчик всех инпутов в проекте. После каждого инпута проверяет валидность каждого инпута во всех формах.
     const inputList = form.querySelectorAll(inputSelector);
     const buttonElement = formSelector.querySelectorAll(submitButtonSelector);
     toggleButtonState(inputSelector, submitButtonSelector);
@@ -41,26 +39,24 @@ const setEventListeners = (formSelector) => {
     });
 };
 
-function enableValidation(formSelector) {
+const enableValidation = () => { // функция запуска процесса наложения валидаций.
     const formList = document.querySelectorAll(formSelector)
     formList.forEach(form => {
         form.addEventListener('submit', e => e.preventDefault())
     })
-};
-
-const fieldsetList = document.querySelectorAll('.form__form-set');
-
-fieldsetList.forEach((fieldSet) => {
-    setEventListeners(fieldSet);
-});
-
-const hasInvalidInput = (inputList) => {
-    return inputList.some((inputSelector) => {
-        return !inputElement.validity.valid;
+    const fieldsetList = document.querySelectorAll('.form__form-set');
+    fieldsetList.forEach((fieldSet) => { // функция валидации каждых отдельных филд-сетов.
+        setEventListeners(fieldSet);
     })
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const hasInvalidInput = (inputList) => { // функция обхода массива инпутов, возвращает true если в массиве есть хоть 1 не валидный инпут.
+    return inputList.some((inputSelector) => {
+        return !inputSelector.validity.valid;
+    })
+};
+
+const toggleButtonState = (inputList, buttonElement) => { // функция делает кнопку submit не активной, если хотя бы одно поле не прошло валидацию.
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(inactiveButtonClass);
     } else {
@@ -68,5 +64,4 @@ const toggleButtonState = (inputList, buttonElement) => {
     }
 };
 
-
-enableValidation();
+enableValidation(validateObj);
