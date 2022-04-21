@@ -1,3 +1,4 @@
+const ESC_BUTTON = 'Escape';
 const popupGlobal = document.querySelector('.popup'); // Блок POPUP (ГЛОБАЛЬНЫЙ)
 const popupProfileEdit = document.querySelector('.popup_profile-edit'); // POPUP редактирования профиля
 const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля

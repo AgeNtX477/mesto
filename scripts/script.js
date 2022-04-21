@@ -1,9 +1,18 @@
+function closePopupGlobalByEsc(e) {
+    if (e.key == ESC_BUTTON) {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopupGlobal(popupOpened);
+    }
+};
+
 function openPopupGlobal(popupGlobal) { // глобальная функция открытия всех POPUP
     popupGlobal.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupGlobalByEsc);
 };
 
 function closePopupGlobal(popupGlobal) { // глобальная функция закрытия всех POPUP
     popupGlobal.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupGlobalByEsc);
 };
 
 function sendCurrentValue() { // функция передачи текущего значения данных профиля в инпут POPUP редактирования профиля
@@ -11,8 +20,8 @@ function sendCurrentValue() { // функция передачи текущег�
     inputAboutProfileEdit.value = currentProfileAbout.textContent;
 }
 
-function handleSubmitformPlaceEdit(evt) { // функция SUMBIT для POPUP редактирования профиля
-    evt.preventDefault();
+function handleSubmitformPlaceEdit(e) { // функция SUMBIT для POPUP редактирования профиля
+    e.preventDefault();
     currentProfileName.textContent = inputNameProfileEdit.value;
     currentProfileAbout.textContent = inputAboutProfileEdit.value;
     closePopupGlobal(popupProfileEdit);
@@ -59,8 +68,8 @@ function handleView(event) { // функция открытия POPUP полно
     popupZoomedImage.alt = zoomed.alt;
 };
 
-function handleSumbitFormPlaceAdd(evt) { // функция SUMBIT для POPUP добавления нового места
-    evt.preventDefault();
+function handleSumbitFormPlaceAdd(e) { // функция SUMBIT для POPUP добавления нового места
+    e.preventDefault();
     renderCard({
         name: inputPlaceNameAddNewPlace.value,
         link: inputLinkAddNewPlace.value
