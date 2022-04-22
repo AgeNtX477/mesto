@@ -1,3 +1,7 @@
+// e = event
+// d = data
+
+
 const closePopupGlobalByEsc = e => { // функция закрытия все попапов нажатием кнопки ESC
     if (e.key == ESC_BUTTON) {
         const popupOpened = document.querySelector('.popup_opened');
@@ -89,12 +93,6 @@ buttonCloseZoomedImagePopup.addEventListener('click', () => closePopupGlobal(pop
 submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
 submitFormAddNewPlacePopup.addEventListener('submit', handleSumbitFormPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места
 
-overlayPlaceProfileEdit.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушаем закрытие попапа профиля 
-overlayPlaceAdd.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушаем закрытие попапа добавления нового места
-overlayPlaceImgZoomed.addEventListener('click', () => closePopupGlobal(popupZoomed)); // слушаем закрытие попапа с картинкой
-
-/*  улучшаем код:
-1. сделать общую функцию закрытия.
-2. сделать массив с начала до конца.
-3. сделать закрытие попапов по нажатию вне области попапа + кнопка ESC. 
-*/
+overlayPlaceProfileEdit.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушаем закрытие попапа профиля кликом на overlay
+overlayPlaceAdd.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушаем закрытие попапа добавления нового места кликом на overlay
+overlayPlaceImgZoomed.addEventListener('click', () => closePopupGlobal(popupZoomed)); // слушаем закрытие попапа с картинкой кликом на overlay
