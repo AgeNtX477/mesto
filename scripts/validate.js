@@ -1,13 +1,18 @@
+const getErrorElement = (inputElement) => {
+    const input = inputElement.getAttribute('name');
+    return document.getElementById(`${input}-error`);
+};
+
 const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = getErrorElement(inputElement);
     errorElement.textContent = errorMessage;
     errorElement.classList.add('popup__error_visible');
 };
 
 const hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    errorElement.textContent = '';
+    const errorElement = getErrorElement(inputElement);
     errorElement.classList.remove('popup__error_visible');
+    errorElement.textContent = '';
 };
 
 const checkValidity = (formElement, inputElement) => {
@@ -21,23 +26,23 @@ const checkValidity = (formElement, inputElement) => {
     }
 };
 
-const setInputListeners = (formElement) => {
+const setInputListeners = formElement => {
     const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-    inputList.forEach(inputElement => {
-        inputElement.addEventListener('input', e => {
-            checkValidity(formElement, inputElement);
-        });
+    const inputListIterator = (inputElement => {
+        const handleInput = (() => checkValidity(formElement, inputElement));
+        inputElement.addEventListener('input', handleInput)
     });
+    inputList.forEach(inputListIterator);
 };
 
 const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.popup__form'));
-    formList.forEach(formElement => {
-        formElement.addEventListener('submit', (e) => {
-            e.preventDefault()
-        });
+    const formListIterator = (formElement => {
+        const handleFormSubmit = (e => e.preventDefault());
+        formElement.addEventListener('submit', handleFormSubmit);
         setInputListeners(formElement);
     });
+    formList.forEach(formListIterator);
 };
 
 enableValidation();
@@ -60,7 +65,15 @@ enableValidation();
 
 
 
-
+/* const setInputListeners = formElement => {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    inputList.forEach(inputElement => {
+        const handleInput = () => {
+            checkValidity(formElement, inputElement);
+        };
+        inputElement.addEventListener('input', handleInput)
+    });
+}; */
 
 
 
