@@ -17,7 +17,7 @@ const hideInputError = (formElement, inputElement) => {
 
 const checkValidity = (formElement, inputElement) => {
     const isInputNotValid = !inputElement.validity.valid;
-    console.log(inputElement.name, isInputNotValid, inputElement.validity);
+    /* console.log(inputElement.name, isInputNotValid, inputElement.validity); */
     if (isInputNotValid) {
         const errorMessage = inputElement.validationMessage;
         showInputError(formElement, inputElement, errorMessage);
@@ -26,10 +26,25 @@ const checkValidity = (formElement, inputElement) => {
     }
 };
 
+const toggleButtonState = (inputList, submitButtonElement) => {
+    const hasInvalidInput = true;
+    if (hasInvalidInput) {
+        submitButtonElement.classList.add('popup__submit_disabled');
+        submitButtonElement.setAttribute('disabled', true);
+    } else {
+        submitButtonElement.classList.remove('popup__submit_disabled');
+        submitButtonElement.removeAttribute('disabled');
+    }
+};
+
 const setInputListeners = formElement => {
     const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const submitButtonElement = formElement.querySelector('.popup__submit');
     const inputListIterator = (inputElement => {
-        const handleInput = (() => checkValidity(formElement, inputElement));
+        const handleInput = () => {
+            checkValidity(formElement, inputElement);
+            toggleButtonState(inputList, submitButtonElement);
+        };
         inputElement.addEventListener('input', handleInput)
     });
     inputList.forEach(inputListIterator);

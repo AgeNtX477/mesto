@@ -1,7 +1,3 @@
-// e = event
-// d = data
-
-
 const closePopupGlobalByEsc = e => { // функция закрытия все попапов нажатием кнопки ESC
     if (e.key == ESC_BUTTON) {
         const popupOpened = document.querySelector('.popup_opened');
@@ -51,9 +47,7 @@ const renderCard = d => { // помещаем новую карточку в в�
     cardsContainer.prepend(cardELement);
 };
 
-items.forEach(card => { // добавляем начальные карточки в верстку
-    renderCard(card);
-});
+items.forEach(card => renderCard(card)); // добавляем начальные карточки в версткуrenderCard(card);
 
 function handleDelete(e) { // функция удалить карточку 
     const cardELement = e.target.closest('.element__box');
