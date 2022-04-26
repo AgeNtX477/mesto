@@ -3,3 +3,9 @@
     left: 36px;
     top: 229px;
 }
+
+@media all and (max-width: 578px) {
+    .popup__error_place_url {
+        left: 16px;
+    }
+}
