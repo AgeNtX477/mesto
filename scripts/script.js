@@ -18,7 +18,7 @@ const closePopupGlobal = popupGlobal => { // глобальная функция
 const sendCurrentValue = () => { // функция передачи текущего значения данных профиля в инпут POPUP редактирования профиля
     inputNameProfileEdit.value = currentProfileName.textContent;
     inputAboutProfileEdit.value = currentProfileAbout.textContent;
-}
+};
 
 const handleSubmitformPlaceEdit = e => { // функция SUMBIT для POPUP редактирования профиля
     e.preventDefault();
@@ -35,9 +35,11 @@ const setEventListeners = cardELement => { // функция обработчи�
 
 const createCard = d => { // функцию создания карточки на основе шаблона template
     const cardELement = templateElement.querySelector('.element__box').cloneNode(true);
-    cardELement.querySelector('.element__image').src = d.link;
-    cardELement.querySelector('.element__image').alt = d.name;
-    cardELement.querySelector('.element__title').textContent = d.name;
+    const elementImage = cardELement.querySelector('.element__image');
+    const elementTitle = cardELement.querySelector('.element__title');
+    elementImage.src = d.link;
+    elementImage.alt = d.name;
+    elementTitle.textContent = d.name;
     setEventListeners(cardELement);
     return cardELement;
 };
@@ -66,7 +68,7 @@ function handleView(e) { // функция открытия POPUP полнора
     popupZoomedImage.alt = zoomed.alt;
 };
 
-const handleSumbitFormPlaceAdd = e => { // функция SUMBIT для POPUP добавления нового места
+const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP добавления нового места
     e.preventDefault();
     renderCard({
         name: inputPlaceNameAddNewPlace.value,
@@ -75,6 +77,7 @@ const handleSumbitFormPlaceAdd = e => { // функция SUMBIT для POPUP д
     closePopupGlobal(popupAddNewPlace);
     inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
     inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
+    enableValidation(validateObj); // после успешного сабмита недаем кнопке быть активной (не даем создать пустую карточку)
 };
 
 buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
