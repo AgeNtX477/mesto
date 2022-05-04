@@ -77,8 +77,10 @@ const handleSumbitFormPlaceAdd = e => { // функция SUMBIT для POPUP д
     inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
 };
 
-buttonProfileEdit.addEventListener('click', () => openPopupGlobal(popupProfileEdit)); // слушатель кнопки открытия POPUP редактирования профиля
-buttonProfileEdit.addEventListener('click', sendCurrentValue); // слушатель передачи текущего значения данных профиля в инпут POPUP редактирования профиля
+buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
+    openPopupGlobal(popupProfileEdit);
+    sendCurrentValue(); // передаем текущее значение данных профиля в инпут POPUP редактирования профиля
+});
 buttonCloseProfileEditPopup.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушатель кнопки закрытия POPUP редактирования профиля
 buttonAddNewPlace.addEventListener('click', () => openPopupGlobal(popupAddNewPlace)); // слушатель кнопки открытия POPUP добавления нового места
 buttonCloseAddNewPlacePopup.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места

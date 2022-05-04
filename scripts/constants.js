@@ -1,7 +1,15 @@
-const ESC_BUTTON = 'Escape';
-const overlayPlaceProfileEdit = document.querySelector('.popup__overlay_place_profile-edit');
-const overlayPlaceAdd = document.querySelector('.popup__overlay_place_add');
-const overlayPlaceImgZoomed = document.querySelector('.popup__overlay_place_img-zoomed');
+const validateObj = { // параметры для работы функции ebableValidation
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
+const ESC_BUTTON = 'Escape'; // кнопка ESC для закрытия попапов кнопкой ESC
+const overlayPlaceProfileEdit = document.querySelector('.popup__overlay_place_profile-edit'); // оверлей редактирования профиля
+const overlayPlaceAdd = document.querySelector('.popup__overlay_place_add'); // оверлей для добавления нового места
+const overlayPlaceImgZoomed = document.querySelector('.popup__overlay_place_img-zoomed'); // оверлей для 
 const popupGlobal = document.querySelector('.popup'); // Блок POPUP (ГЛОБАЛЬНЫЙ)
 const popupProfileEdit = document.querySelector('.popup_profile-edit'); // POPUP редактирования профиля
 const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля

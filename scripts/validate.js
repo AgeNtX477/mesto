@@ -1,4 +1,86 @@
-const validateObj = { // все необходимые селекторы для работы функции ebableValidation
+const getErrorElement = (inputElement) => { // функция находит инпут с которым происходит взаимодействие(событие инпут)
+    const input = inputElement.getAttribute('name');
+    return document.getElementById(`${input}-error`);
+};
+
+const showInputError = (formElement, inputElement, errorMessage, obj) => { // функция которая показывает сообщения об ошибках и подчеркивает красным соответствующий инпут
+    const errorElement = getErrorElement(inputElement);
+    errorElement.textContent = errorMessage;
+    inputElement.classList.add(obj.inputErrorClass);
+    errorElement.classList.add(obj.errorClass);
+};
+
+const hideInputError = (formElement, inputElement, obj) => { // функция которая прячет сообщения об ошибках и удаляет красное подчеркивание соответвующего инпута
+    const errorElement = getErrorElement(inputElement);
+    errorElement.textContent = '';
+    errorElement.classList.remove(obj.errorClass);
+    inputElement.classList.remove(obj.inputErrorClass);
+};
+
+const checkValidity = (formElement, inputElement, obj) => { // функция проверки инпутов и добавления соответсвующих классов при невалидности
+    const isInputNotValid = !inputElement.validity.valid;
+    if (isInputNotValid) {
+        const errorMessage = inputElement.validationMessage;
+        showInputError(formElement, inputElement, errorMessage, obj);
+    } else {
+        hideInputError(formElement, inputElement, obj);
+    }
+};
+
+const toggleButtonState = (inputList, submitButtonElement, obj) => { // функция переключения кнопки submit в зависимости от валидности инпутов
+    const inputElements = Array.from(inputList) // создаем массив для дальнейшей проверки
+    const hasInvalidInput = inputElements.some((inputElement) => { // методом some проверяем, есть ли невалидные инпуты
+        return !inputElement.validity.valid;
+    });
+    if (hasInvalidInput) { // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
+        submitButtonElement.classList.add(obj.inactiveButtonClass);
+        submitButtonElement.setAttribute('disabled', true);
+    } else {
+        submitButtonElement.classList.remove(obj.inactiveButtonClass); // если все инпуты валидны, то и кнопка активна
+        submitButtonElement.removeAttribute('disabled');
+    }
+};
+
+const setInputListeners = (formElement, obj) => { // функция слушателей инпутов
+    const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector)); // находим все инпуты в проекте и превращаем их в массив
+    const submitButtonElement = formElement.querySelector(obj.submitButtonSelector); // находим кнопку сабмита
+    const inputListIterator = (inputElement => {
+        const handleInput = () => {
+            checkValidity(formElement, inputElement, obj);
+            toggleButtonState(inputList, submitButtonElement, obj);
+        };
+        inputElement.addEventListener('input', handleInput)
+    });
+    toggleButtonState(inputList, submitButtonElement, obj);
+    inputList.forEach(inputListIterator);
+};
+
+const enableValidation = (obj) => { // функция запуска валидации
+    const formList = Array.from(document.querySelectorAll(obj.formSelector)); // находим все формы в проекте и превращаем их в массив
+    const formListIterator = (formElement => {
+        const handleFormSubmit = (e => e.preventDefault());
+        formElement.addEventListener('submit', handleFormSubmit);
+        setInputListeners(formElement, obj);
+    });
+    formList.forEach(formListIterator);
+};
+
+enableValidation(validateObj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* const validateObj = { // все необходимые селекторы для работы функции ebableValidation
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit',
@@ -28,7 +110,6 @@ const hideInputError = (formElement, inputElement) => { // функция кот
 
 const checkValidity = (formElement, inputElement) => { // функция проверки инпутов и добавления соответсвующих классов при невалидности
     const isInputNotValid = !inputElement.validity.valid;
-    /* console.log(inputElement.name, isInputNotValid, inputElement.validity); */
     if (isInputNotValid) {
         const errorMessage = inputElement.validationMessage;
         showInputError(formElement, inputElement, errorMessage);
@@ -75,4 +156,4 @@ const enableValidation = () => { // функция запуска валидац
     formList.forEach(formListIterator);
 };
 
-enableValidation();
+enableValidation(); */
