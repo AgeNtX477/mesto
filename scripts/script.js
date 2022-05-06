@@ -77,7 +77,7 @@ const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP 
     closePopupGlobal(popupAddNewPlace);
     inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
     inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
-    enableValidation(validateObj); // после успешного сабмита недаем кнопке быть активной (не даем создать пустую карточку)
+    // enableValidation(validateObj); // после успешного сабмита недаем кнопке быть активной (не даем создать пустую карточку)
 };
 
 buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля

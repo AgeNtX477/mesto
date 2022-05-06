@@ -27,17 +27,25 @@ const checkValidity = (formElement, inputElement, obj) => { // функция п
     }
 };
 
+const makeButtonIncative = (inputList, submitButtonElement, obj) => { // функция делает кнопку неактивной
+    submitButtonElement.classList.add(obj.inactiveButtonClass);
+    submitButtonElement.setAttribute('disabled', true);
+};
+
+const makeButtonActive = (inputList, submitButtonElement, obj) => { // функция делает кнопку активной
+    submitButtonElement.classList.remove(obj.inactiveButtonClass);
+    submitButtonElement.removeAttribute('disabled');
+};
+
 const toggleButtonState = (inputList, submitButtonElement, obj) => { // функция переключения кнопки submit в зависимости от валидности инпутов
     const inputElements = Array.from(inputList) // создаем массив для дальнейшей проверки
     const hasInvalidInput = inputElements.some((inputElement) => { // методом some проверяем, есть ли невалидные инпуты
         return !inputElement.validity.valid;
     });
-    if (hasInvalidInput) { // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
-        submitButtonElement.classList.add(obj.inactiveButtonClass);
-        submitButtonElement.setAttribute('disabled', true);
+    if (hasInvalidInput) {
+        makeButtonIncative(inputList, submitButtonElement, obj); // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
     } else {
-        submitButtonElement.classList.remove(obj.inactiveButtonClass); // если все инпуты валидны, то и кнопка активна
-        submitButtonElement.removeAttribute('disabled');
+        makeButtonActive(inputList, submitButtonElement, obj); // если все инпуты валидны, то и кнопка активна
     }
 };
 
