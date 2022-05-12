@@ -75,9 +75,9 @@ const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP 
         name: inputPlaceNameAddNewPlace.value,
         link: inputLinkAddNewPlace.value
     }, cardsContainer);
-    closePopupGlobal(popupAddNewPlace);
     inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
     inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
+    closePopupGlobal(popupAddNewPlace);
 };
 
 buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
@@ -89,8 +89,8 @@ buttonProfileEdit.addEventListener('click', () => { // слушатель кно
 buttonCloseProfileEditPopup.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушатель кнопки закрытия POPUP редактирования профиля
 
 buttonAddNewPlace.addEventListener('click', () => { // слушатель кнопки открытия POPUP добавления нового места
-    openPopupGlobal(popupAddNewPlace);
     makeButtonIncative(null, submitButtonAdd, validateObj);
+    openPopupGlobal(popupAddNewPlace);
 });
 
 buttonCloseAddNewPlacePopup.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
