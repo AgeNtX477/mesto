@@ -27,7 +27,7 @@ function checkValidity(formElement, inputElement, obj) { // функция пр�
     }
 };
 
-function makeButtonIncative(inputList, submitButtonElement, obj) { // функция делает кнопку неактивной inputList
+function makeButtonInaсtive(inputList, submitButtonElement, obj) { // функция делает кнопку неактивной inputList
     submitButtonElement.classList.add(obj.inactiveButtonClass);
     submitButtonElement.setAttribute('disabled', true);
 };
@@ -43,7 +43,7 @@ function toggleButtonState(inputList, submitButtonElement, obj) { // функц�
         return !inputElement.validity.valid;
     });
     if (hasInvalidInput) {
-        makeButtonIncative(inputList, submitButtonElement, obj); // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
+        makeButtonInaсtive(inputList, submitButtonElement, obj); // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
     } else {
         makeButtonActive(inputList, submitButtonElement, obj); // если все инпуты валидны, то и кнопка активна
     }

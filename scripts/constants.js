@@ -1,4 +1,4 @@
-const validateObj = ({ // параметры для работы функции ebableValidation
+const validateObj = ({ // параметры для работы функции enableValidation
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit',

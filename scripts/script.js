@@ -13,7 +13,6 @@ const openPopupGlobal = (popupGlobal) => { // глобальная функци�
 const closePopupGlobal = (popupGlobal) => { // глобальная функция закрытия всех POPUP
     popupGlobal.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupGlobalByEsc); // снимаем слушатель на кнопку ESC когда попап закрываем
-    hideInputError(null, inputs, validateObj)
 };
 
 const sendCurrentValue = () => { // функция передачи текущего значения данных профиля в инпут POPUP редактирования профиля
@@ -83,14 +82,14 @@ const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP 
 buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
     openPopupGlobal(popupProfileEdit);
     sendCurrentValue(); // передаем текущее значение данных профиля в инпут POPUP редактирования профиля
-    makeButtonIncative(null, submitButtonEdit, validateObj);
+    makeButtonInaсtive(null, submitButtonEdit, validateObj);
 });
 
 buttonCloseProfileEditPopup.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушатель кнопки закрытия POPUP редактирования профиля
 
 buttonAddNewPlace.addEventListener('click', () => { // слушатель кнопки открытия POPUP добавления нового места
-    makeButtonIncative(null, submitButtonAdd, validateObj);
     openPopupGlobal(popupAddNewPlace);
+    makeButtonInaсtive(null, submitButtonAdd, validateObj);
 });
 
 buttonCloseAddNewPlacePopup.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
