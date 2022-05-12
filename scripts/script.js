@@ -5,14 +5,15 @@ const closePopupGlobalByEsc = e => { // функция закрытия все �
     }
 };
 
-const openPopupGlobal = popupGlobal => { // глобальная функция открытия всех POPUP
+const openPopupGlobal = (popupGlobal) => { // глобальная функция открытия всех POPUP
     popupGlobal.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupGlobalByEsc); // добавляем слушатель на кнопку ESC когда попап открыт
 };
 
-const closePopupGlobal = popupGlobal => { // глобальная функция закрытия всех POPUP
+const closePopupGlobal = (popupGlobal) => { // глобальная функция закрытия всех POPUP
     popupGlobal.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupGlobalByEsc); // снимаем слушатель на кнопку ESC когда попап закрываем
+    hideInputError(null, inputs, validateObj)
 };
 
 const sendCurrentValue = () => { // функция передачи текущего значения данных профиля в инпут POPUP редактирования профиля
@@ -77,15 +78,21 @@ const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP 
     closePopupGlobal(popupAddNewPlace);
     inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
     inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
-    // enableValidation(validateObj); // после успешного сабмита недаем кнопке быть активной (не даем создать пустую карточку)
 };
 
 buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
     openPopupGlobal(popupProfileEdit);
     sendCurrentValue(); // передаем текущее значение данных профиля в инпут POPUP редактирования профиля
+    makeButtonIncative(null, submitButtonEdit, validateObj);
 });
+
 buttonCloseProfileEditPopup.addEventListener('click', () => closePopupGlobal(popupProfileEdit)); // слушатель кнопки закрытия POPUP редактирования профиля
-buttonAddNewPlace.addEventListener('click', () => openPopupGlobal(popupAddNewPlace)); // слушатель кнопки открытия POPUP добавления нового места
+
+buttonAddNewPlace.addEventListener('click', () => { // слушатель кнопки открытия POPUP добавления нового места
+    openPopupGlobal(popupAddNewPlace);
+    makeButtonIncative(null, submitButtonAdd, validateObj);
+});
+
 buttonCloseAddNewPlacePopup.addEventListener('click', () => closePopupGlobal(popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
 buttonCloseZoomedImagePopup.addEventListener('click', () => closePopupGlobal(popupZoomed)); // слушатель закрытия POPUP полноразмерной картинки
 

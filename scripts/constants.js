@@ -1,11 +1,11 @@
-const validateObj = { // параметры для работы функции ebableValidation
+const validateObj = ({ // параметры для работы функции ebableValidation
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit',
     inactiveButtonClass: 'popup__submit_disabled',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
-};
+});
 const ESC_BUTTON = 'Escape'; // кнопка ESC для закрытия попапов кнопкой ESC
 const overlayPlaceProfileEdit = document.querySelector('.popup__overlay_place_profile-edit'); // оверлей редактирования профиля
 const overlayPlaceAdd = document.querySelector('.popup__overlay_place_add'); // оверлей для добавления нового места
@@ -35,4 +35,5 @@ const currentProfileAbout = document.querySelector('.profile__description'); // 
 const cardsContainer = document.querySelector('.element'); // родитель всех карточек в верстке
 const templateElement = document.getElementById('elements-Box-Content').content; // находим весь тег template
 const card = document.querySelector('.element__box'); // находим одну карточку в теге template
-const inputs = document.querySelector('.popup__input'); // глобальная константа для всех INPUT
+const submitButtonEdit = document.querySelector('.popup__submit_place_edit') // кнопка сабмит редактирования профиля
+const submitButtonAdd = document.querySelector('.popup__submit_place_add'); // кнопка сабмит добавления нового места
