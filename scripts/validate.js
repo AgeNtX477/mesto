@@ -1,3 +1,12 @@
+const validateObj = ({ // параметры для работы функции enableValidation
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+});
+
 function getErrorElement(inputElement) { // функция находит инпут с которым происходит взаимодействие(событие инпут)
     const input = inputElement.getAttribute('name');
     return document.getElementById(`${input}-error`);
