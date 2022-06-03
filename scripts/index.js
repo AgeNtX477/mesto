@@ -45,7 +45,7 @@ const handleSubmitformPlaceEdit = e => { // функция SUMBIT для POPUP �
     e.preventDefault();
     data.currentProfileName.textContent = data.inputNameProfileEdit.value;
     data.currentProfileAbout.textContent = data.inputAboutProfileEdit.value;
-    closePopupGlobal(popupProfileEdit);
+    data.closePopupGlobal(data.popupProfileEdit);
 };
 
 function createCard(cardName, cardLink) { // добавление карточки в верску
