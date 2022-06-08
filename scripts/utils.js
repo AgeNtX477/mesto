@@ -21,6 +21,7 @@ export const buttonCloseProfileEditPopup = popupProfileEdit.querySelector('.popu
 export const buttonCloseAddNewPlacePopup = popupAddNewPlace.querySelector('.popup__close-button_place_add'); // кнопка закрыть POPUP добавления нового места
 export const currentProfileName = document.querySelector('.profile__author'); // находим отображение на странице имя профиля
 export const currentProfileAbout = document.querySelector('.profile__description'); // находим отображение на странице описания имени профиля
+export const submitButtonPlaceAdd = document.querySelector('.popup__submit_place_add'); // находим кнопку сабмита добавления нового места
 
 export const closePopupGlobalByEsc = e => { // функция закрытия все попапов нажатием кнопки ESC
     if (e.key == ESC_BUTTON) {

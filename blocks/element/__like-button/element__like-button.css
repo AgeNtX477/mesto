@@ -7,6 +7,7 @@
     outline: none;
     background-repeat: no-repeat;
     margin-right: 20px;
+    margin-left: 10px;
     transition: .3s;
     cursor: pointer;
 }

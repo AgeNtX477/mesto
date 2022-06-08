@@ -1,4 +1,4 @@
-import { openPopupGlobal, closePopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage, buttonCloseZoomedImagePopup } from './utils.js';
+import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage, buttonCloseZoomedImagePopup } from './utils.js';
 
 export class Card { // создаем класс Card
     constructor(cardName, cardlink, cardSelector) { // определяем параметры класса Card
@@ -14,21 +14,16 @@ export class Card { // создаем класс Card
         popupZoomedCaption.textContent = this._cardName;
     }
 
-    _handleViewClose() { // метод закрытия полноценного размера картинки
-        closePopupGlobal(popupZoomed); // используем глобальную функцию закрытия попапа, аргументом указываем попап просмотра карточки
-    }
-
     _handleLike() { // метод поставить лайк
         this._element.querySelector('.element__like-button').classList.toggle('element__like-button_type_active');
     }
 
     _handleDelete() { // метод удалить карточку 
-        this._element.closest('.element__box');
         this._element.remove();
     }
 
     _getTemplate() { // указываем откуда брать template в разметке
-        const cardElement = document.getElementById('elements-Box-Content').content.querySelector('.element__box').cloneNode(true);
+        const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element__box').cloneNode(true);
         return cardElement;
     }
 
@@ -50,9 +45,6 @@ export class Card { // создаем класс Card
         });
         this._element.querySelector('.element__like-button').addEventListener('click', () => {
             this._handleLike();
-        });
-        buttonCloseZoomedImagePopup.addEventListener('click', () => {
-            this._handleViewClose();
         });
     }
 };

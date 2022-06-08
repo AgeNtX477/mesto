@@ -31,9 +31,7 @@ const items = [{ // объект наполнения карточек для te
 const cardsContainer = document.querySelector('.element'); // родитель всех карточек в верстке
 
 items.forEach((item) => { // функция-итератор карточек
-    const card = new Card(item.cardName, item.cardLink, '#elements-Box-Content');
-    const cardELement = card.generateCard();
-    cardsContainer.append(cardELement);
+    cardsContainer.append(createCard(item.cardName, item.cardLink)); // что-бы не дублировать код используем функцию createCard
 });
 
 const sendCurrentValue = () => { // функция передачи текущего значения данных профиля в инпут POPUP редактирования профиля
@@ -48,7 +46,7 @@ const handleSubmitformPlaceEdit = e => { // функция SUMBIT для POPUP �
     data.closePopupGlobal(data.popupProfileEdit);
 };
 
-function createCard(cardName, cardLink) { // добавление карточки в верску
+function createCard(cardName, cardLink) { // добавление карточки в верску через создание экземпляра карточки
     const listItem = new Card(cardName, cardLink, ".template__card");
     const newCard = listItem.generateCard();
     return newCard;
@@ -62,6 +60,8 @@ const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP 
     data.inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
     data.inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT */
     data.closePopupGlobal(data.popupAddNewPlace);
+    const deletedButton = new FormValidator(validateObj, data.submitFormAddNewPlacePopup);
+    deletedButton.deactivateSubmitButton(null, data.submitButtonPlaceAdd, validateObj);
 };
 
 const validateObj = ({ // параметры для работы функции enableValidation
@@ -92,9 +92,10 @@ data.buttonAddNewPlace.addEventListener('click', () => { // слушатель �
 });
 
 data.buttonCloseAddNewPlacePopup.addEventListener('click', () => data.closePopupGlobal(data.popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
+data.buttonCloseZoomedImagePopup.addEventListener('click', () => data.closePopupGlobal(data.popupZoomed)); // слушатель кнопки закрытия POPUP полноценного просмотра карточки
 
 data.submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
-data.submitFormAddNewPlacePopup.addEventListener('submit', handleSumbitFormPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места  */
+data.submitFormAddNewPlacePopup.addEventListener('submit', handleSumbitFormPlaceAdd); // слушаем SUBMIT для POPUP добавления нового места
 
 data.overlayPlaceProfileEdit.addEventListener('click', () => data.closePopupGlobal(data.popupProfileEdit)); // слушаем закрытие попапа профиля кликом на overlay
 data.overlayPlaceAdd.addEventListener('click', () => data.closePopupGlobal(data.popupAddNewPlace)); // слушаем закрытие попапа добавления нового места кликом на overlay

@@ -1,4 +1,78 @@
 export class FormValidator {
+    constructor(settings, form) {
+        this._settings = settings;
+        this._form = form;
+        this._inputList = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
+        this._submitButtonElement = this._form.querySelector(this._settings.submitButtonSelector);
+    }
+
+    _showInputError(inputElement, errorMessage) {
+        const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
+        errorElement.textContent = errorMessage;
+        inputElement.classList.add(this._settings.inputErrorClass);
+        errorElement.classList.add(this._settings.errorClass);
+    }
+
+    _hideInputError(inputElement) {
+        const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
+        errorElement.textContent = '';
+        errorElement.classList.remove(this._settings.errorClass);
+        inputElement.classList.remove(this._settings.inputErrorClass);
+    }
+
+    _checkValidity(inputElement) {
+        const isInputNotValid = !inputElement.validity.valid;
+        if (isInputNotValid) {
+            const errorMessage = inputElement.validationMessage;
+            this._showInputError(inputElement, errorMessage);
+        } else {
+            this._hideInputError(inputElement);
+        }
+    }
+
+    _makeButtonInaсtive() {
+        this._submitButtonElement.classList.add(this._settings.inactiveButtonClass);
+        this._submitButtonElement.setAttribute('disabled', true);
+    }
+
+    _makeButtonActive() {
+        this._submitButtonElement.classList.remove(this._settings.inactiveButtonClass);
+        this._submitButtonElement.removeAttribute('disabled');
+    }
+
+    _toggleButtonState() {
+        const inputElements = Array.from(this._inputList) // создаем массив для дальнейшей проверки
+        const hasInvalidInput = inputElements.some((inputElement) => { // методом some проверяем, есть ли невалидные инпуты
+            return !inputElement.validity.valid;
+        });
+        if (hasInvalidInput) {
+            this._makeButtonInaсtive(); // если есть не валидные инпуты то блокируем кнопку инпута и передаем ей "неактивный" класс
+        } else {
+            this._makeButtonActive(); // если все инпуты валидны, то и кнопка активна
+        }
+    }
+
+    _setInputListeners() {
+        this._inputList.forEach((inputElement) => {
+            inputElement.addEventListener('input', () => {
+                this._checkValidity(inputElement);
+                this._toggleButtonState();
+            });
+        });
+    }
+
+    enableValidation() {
+        this._form.addEventListener('submmit', e => {
+            e.preventDefault();
+        });
+        this._setInputListeners();
+    }
+}
+
+
+
+
+/* export class FormValidator {
     constructor(validateObj, formSelector) {
         this._validateObj = validateObj;
         this._formSelector = formSelector;
@@ -31,6 +105,10 @@ export class FormValidator {
         } else {
             this._hideInputError(formElement, inputElement, validateObj);
         }
+    }
+
+    deactivateSubmitButton(inputList, submitButtonElement, validateObj) {
+        this._makeButtonInaсtive(inputList, submitButtonElement, validateObj);
     }
 
     _makeButtonInaсtive(inputList, submitButtonElement, validateObj) {
@@ -78,4 +156,4 @@ export class FormValidator {
         });
         formList.forEach(formListIterator);
     }
-}
+} */
