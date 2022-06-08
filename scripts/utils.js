@@ -23,7 +23,7 @@ export const currentProfileName = document.querySelector('.profile__author'); //
 export const currentProfileAbout = document.querySelector('.profile__description'); // находим отображение на странице описания имени профиля
 export const submitButtonPlaceAdd = document.querySelector('.popup__submit_place_add'); // находим кнопку сабмита добавления нового места
 
-export const closePopupGlobalByEsc = e => { // функция закрытия все попапов нажатием кнопки ESC
+export const closePopupGlobalByEsc = (e) => { // функция закрытия все попапов нажатием кнопки ESC
     if (e.key == ESC_BUTTON) {
         const popupOpened = document.querySelector('.popup_opened');
         closePopupGlobal(popupOpened);

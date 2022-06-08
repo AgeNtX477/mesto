@@ -1,4 +1,4 @@
-import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage, buttonCloseZoomedImagePopup } from './utils.js';
+import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage } from './utils.js';
 
 export class Card { // создаем класс Card
     constructor(cardName, cardlink, cardSelector) { // определяем параметры класса Card
@@ -47,4 +47,4 @@ export class Card { // создаем класс Card
             this._handleLike();
         });
     }
-};
+}

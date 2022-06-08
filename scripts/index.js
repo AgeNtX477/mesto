@@ -39,30 +39,11 @@ const sendCurrentValue = () => { // функция передачи текуще
     data.inputAboutProfileEdit.value = data.currentProfileAbout.textContent;
 };
 
-const handleSubmitformPlaceEdit = e => { // функция SUMBIT для POPUP редактирования профиля
-    e.preventDefault();
-    data.currentProfileName.textContent = data.inputNameProfileEdit.value;
-    data.currentProfileAbout.textContent = data.inputAboutProfileEdit.value;
-    data.closePopupGlobal(data.popupProfileEdit);
-};
-
 function createCard(cardName, cardLink) { // добавление карточки в верску через создание экземпляра карточки
     const listItem = new Card(cardName, cardLink, ".template__card");
     const newCard = listItem.generateCard();
     return newCard;
 }
-
-const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP добавления нового места
-    const cardName = data.inputPlaceNameAddNewPlace.value;
-    const cardLink = data.inputLinkAddNewPlace.value;
-    e.preventDefault();
-    cardsContainer.prepend(createCard(cardName, cardLink, ".template__card"));
-    data.inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
-    data.inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT */
-    data.closePopupGlobal(data.popupAddNewPlace);
-    const deletedButton = new FormValidator(validateObj, data.submitFormAddNewPlacePopup);
-    deletedButton.deactivateSubmitButton(null, data.submitButtonPlaceAdd, validateObj);
-};
 
 const validateObj = ({ // параметры для работы функции enableValidation
     formSelector: '.popup__form',
@@ -73,25 +54,49 @@ const validateObj = ({ // параметры для работы функции 
     errorClass: 'popup__error_visible'
 });
 
-const validateProfileEdit = new FormValidator(validateObj, '.popup__form_place_edit'); // создаем дубликат FormValidator редактирования профиля
+const validateProfileEdit = new FormValidator(validateObj, data.submitFormProfileEditPopup); // создаем дубликат FormValidator редактирования профиля
+const validateCardAdd = new FormValidator(validateObj, data.popupAddNewPlace); // создаем дубликат FormValidator добавления новой карточки
 
-const validateCardAdd = new FormValidator(validateObj, '.popup__form_place_add'); // создаем дубликат FormValidator добавления новой карточки
-
-validateProfileEdit.enableValidation(); // запускаем валидацию для форсы редактирования профиля
+validateProfileEdit.enableValidation(); // запускаем валидацию для формы редактирования профиля
 validateCardAdd.enableValidation(); // запускаем валидацию для добавления новой карточки
+
+const handleSubmitformPlaceEdit = e => { // функция SUMBIT для POPUP редактирования профиля
+    e.preventDefault();
+    data.currentProfileName.textContent = data.inputNameProfileEdit.value;
+    data.currentProfileAbout.textContent = data.inputAboutProfileEdit.value;
+    data.closePopupGlobal(data.popupProfileEdit);
+    validateProfileEdit.deactivateValidation(); // выключаем кнопку после сабмита
+};
+
+const handleSumbitFormPlaceAdd = (e) => { // функция SUMBIT для POPUP добавления нового места
+    const cardName = data.inputPlaceNameAddNewPlace.value;
+    const cardLink = data.inputLinkAddNewPlace.value;
+    e.preventDefault();
+    cardsContainer.prepend(createCard(cardName, cardLink, ".template__card"));
+    data.inputPlaceNameAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT
+    data.inputLinkAddNewPlace.value = ''; // очистка инпута после удачной отправки SUBMIT */
+    data.closePopupGlobal(data.popupAddNewPlace);
+    validateCardAdd.deactivateValidation(); // выключаем кнопку после сабмита
+};
 
 data.buttonProfileEdit.addEventListener('click', () => { // слушатель кнопки открытия POPUP редактирования профиля
     data.openPopupGlobal(data.popupProfileEdit);
     sendCurrentValue(); // передаем текущее значение данных профиля в инпут POPUP редактирования профиля
 });
 
-data.buttonCloseProfileEditPopup.addEventListener('click', () => data.closePopupGlobal(data.popupProfileEdit)); // слушатель кнопки закрытия POPUP редактирования профиля
+data.buttonCloseProfileEditPopup.addEventListener('click', () => { // слушатель кнопки закрытия POPUP редактирования профиля
+    data.closePopupGlobal(data.popupProfileEdit)
+    validateProfileEdit.deactivateValidation(); // чистим ошибки валидации
+});
 
 data.buttonAddNewPlace.addEventListener('click', () => { // слушатель кнопки открытия POPUP добавления нового места
     data.openPopupGlobal(data.popupAddNewPlace);
 });
 
-data.buttonCloseAddNewPlacePopup.addEventListener('click', () => data.closePopupGlobal(data.popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
+data.buttonCloseAddNewPlacePopup.addEventListener('click', () => { // слушатель кнопки закрытия POPUP добавления нового места
+    data.closePopupGlobal(data.popupAddNewPlace);
+});
+
 data.buttonCloseZoomedImagePopup.addEventListener('click', () => data.closePopupGlobal(data.popupZoomed)); // слушатель кнопки закрытия POPUP полноценного просмотра карточки
 
 data.submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
