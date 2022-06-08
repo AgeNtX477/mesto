@@ -89,14 +89,8 @@ data.buttonCloseProfileEditPopup.addEventListener('click', () => { // слуша
     validateProfileEdit.deactivateValidation(); // чистим ошибки валидации
 });
 
-data.buttonAddNewPlace.addEventListener('click', () => { // слушатель кнопки открытия POPUP добавления нового места
-    data.openPopupGlobal(data.popupAddNewPlace);
-});
-
-data.buttonCloseAddNewPlacePopup.addEventListener('click', () => { // слушатель кнопки закрытия POPUP добавления нового места
-    data.closePopupGlobal(data.popupAddNewPlace);
-});
-
+data.buttonAddNewPlace.addEventListener('click', () => data.openPopupGlobal(data.popupAddNewPlace)); // слушатель кнопки открытия POPUP добавления нового места
+data.buttonCloseAddNewPlacePopup.addEventListener('click', () => data.closePopupGlobal(data.popupAddNewPlace)); // слушатель кнопки закрытия POPUP добавления нового места
 data.buttonCloseZoomedImagePopup.addEventListener('click', () => data.closePopupGlobal(data.popupZoomed)); // слушатель кнопки закрытия POPUP полноценного просмотра карточки
 
 data.submitFormProfileEditPopup.addEventListener('submit', handleSubmitformPlaceEdit); // слушаем SUBMIT для POPUP редактирования профиля
