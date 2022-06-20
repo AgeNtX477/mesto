@@ -1,5 +1,3 @@
-/* import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage } from './utils.js'; */
-
 export class Card { // создаем класс Card
     constructor(cardName, cardlink, cardSelector, handleImageClick) { // определяем параметры класса Card
         this._cardName = cardName;

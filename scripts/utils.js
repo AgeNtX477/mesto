@@ -1,16 +1,8 @@
-export const buttonCloseZoomedImagePopup = document.querySelector('.popup__close-button_place_img-zoomed'); // кнопка закрыть POPUP полноразмерной картинки
-export const popupProfileEdit = document.querySelector('.popup_profile-edit'); // POPUP редактирования профиля
 export const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля
 export const inputNameProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_author'); // input форма SUBMIT для POPUP редактирования профиля (имя)
 export const inputAboutProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_description'); // input форма SUBMIT для POPUP редактирования профиля (о себе)
-export const popupAddNewPlace = document.querySelector('.popup_img-add'); // POPUP добавления нового места
 export const submitFormAddNewPlacePopup = document.querySelector('.popup__form_place_add'); // форма SUBMIT для POPUP добавления нового места 
 export const inputPlaceNameAddNewPlace = document.querySelector('.popup__input_type_place-name'); // input форма SUBMIT для POPUP добавления нового места (наименование места)
-export const inputLinkAddNewPlace = document.querySelector('.popup__input_type_img-src'); // input форма SUBMIT для POPUP добавления нового места (ссылка на картинку)  */
+export const inputLinkAddNewPlace = document.querySelector('.popup__input_type_img-src'); // input форма SUBMIT для POPUP добавления нового места (ссылка на картинку)
 export const buttonProfileEdit = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
 export const buttonAddNewPlace = document.querySelector('.profile__add-button'); // кнопка добавления нового места
-export const buttonCloseProfileEditPopup = popupProfileEdit.querySelector('.popup__close-button_place_edit'); // кнопка закрыть POPUP редактирования профиля
-export const buttonCloseAddNewPlacePopup = popupAddNewPlace.querySelector('.popup__close-button_place_add'); // кнопка закрыть POPUP добавления нового места
-export const currentProfileName = document.querySelector('.profile__author'); // находим отображение на странице имя профиля
-export const currentProfileAbout = document.querySelector('.profile__description'); // находим отображение на странице описания имени профиля
-export const submitButtonPlaceAdd = document.querySelector('.popup__submit_place_add'); // находим кнопку сабмита добавления нового места
