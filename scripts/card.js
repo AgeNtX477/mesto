@@ -1,17 +1,11 @@
-import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage } from './utils.js';
+/* import { openPopupGlobal, popupZoomed, popupZoomedCaption, popupZoomedImage } from './utils.js'; */
 
 export class Card { // создаем класс Card
-    constructor(cardName, cardlink, cardSelector) { // определяем параметры класса Card
+    constructor(cardName, cardlink, cardSelector, handleImageClick) { // определяем параметры класса Card
         this._cardName = cardName;
         this._cardLink = cardlink;
         this._cardSelector = cardSelector;
-    }
-
-    _handleView() { // метод просмотра полноценного размера картинки
-        openPopupGlobal(popupZoomed); // используем глобальную функцию открытия попара, аргументом указываем попап просмотра карточки
-        popupZoomedImage.src = this._cardLink;
-        popupZoomedImage.alt = this._cardName;
-        popupZoomedCaption.textContent = this._cardName;
+        this._handleImageClick = handleImageClick;
     }
 
     _handleLike() { // метод поставить лайк
@@ -38,7 +32,7 @@ export class Card { // создаем класс Card
 
     _setEventListeners() { // метод слушателей карточки
         this._element.querySelector('.element__image').addEventListener('click', () => {
-            this._handleView();
+            this._handleImageClick();
         });
         this._element.querySelector('.element__del-button').addEventListener('click', () => {
             this._handleDelete();
