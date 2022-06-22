@@ -1,54 +1,19 @@
-import './pages/index.css';
-import { Card } from './components/Сard.js';
-import { FormValidator } from './components/FormValidator.js';
-import { Section } from './components/Section.js';
-import { PopupWithImage } from './components/PopupWithImage.js';
-import { PopupWithForm } from './components/PopupWithForm.js';
-import { UserInfo } from './components/UserInfo.js';
-
-const submitFormProfileEditPopup = document.querySelector('.popup__form_place_edit'); // форма SUBMIT для POPUP редактирования профиля
-const inputNameProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_author'); // input форма SUBMIT для POPUP редактирования профиля (имя)
-const inputAboutProfileEdit = submitFormProfileEditPopup.querySelector('.popup__input_type_description'); // input форма SUBMIT для POPUP редактирования профиля (о себе)
-const submitFormAddNewPlacePopup = document.querySelector('.popup__form_place_add'); // форма SUBMIT для POPUP добавления нового места 
-const buttonProfileEdit = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
-const buttonAddNewPlace = document.querySelector('.profile__add-button'); // кнопка добавления нового места
-
-const alderaanImage = new URL('./images/alderaan-hope.jpg',
-    import.meta.url);
-const jakkuImage = new URL('./images/jakku.jpg',
-    import.meta.url);
-const nabunImage = new URL('./images/nabu.jpg',
-    import.meta.url);
-const korusantImage = new URL('./images/korusant.jpg',
-    import.meta.url);
-const skarifImage = new URL('./images/skarif.jpg',
-    import.meta.url);
-
-const initialCards = [{ // объект наполнения карточек для template элемента
-        cardName: 'Альдеран',
-        cardLink: alderaanImage
-    },
-    {
-        cardName: 'Джакку',
-        cardLink: jakkuImage
-    },
-    {
-        cardName: 'Набу',
-        cardLink: nabunImage
-    },
-    {
-        cardName: 'Корусант',
-        cardLink: korusantImage
-    },
-    {
-        cardName: 'Скариф',
-        cardLink: skarifImage
-    },
-    {
-        cardName: 'Звезда смерти',
-        cardLink: 'https://avatars.mds.yandex.net/get-zen_doc/3445317/pub_60000a8496f6d30d4cf5774a_600013c23112ec025ead4191/scale_2400'
-    }
-];
+import './index.css';
+import { Card } from '../components/Сard.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+import {
+    submitFormProfileEditPopup,
+    inputNameProfileEdit,
+    inputAboutProfileEdit,
+    submitFormAddNewPlacePopup,
+    buttonProfileEdit,
+    buttonAddNewPlace,
+    initialCards
+} from '../utils/constants.js';
 
 function createCard(cardName, cardLink) { // добавление карточки в верску через создание экземпляра карточки
     const listItem = new Card(cardName, cardLink, '.template__card', () => {
@@ -100,7 +65,6 @@ const cardAddPopup = new PopupWithForm('.popup_img-add', {
         const card = createCard(cardName, cardLink); // 
         section.addItem(card); // добавляем карточку методом addItem класса Section
         cardAddPopup.close();
-        validateCardAdd.deactivateValidation();
     }
 });
 

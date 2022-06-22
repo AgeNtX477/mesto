@@ -7,7 +7,7 @@ export class Card { // создаем класс Card
     }
 
     _handleLike() { // метод поставить лайк
-        this._element.querySelector('.element__like-button').classList.toggle('element__like-button_type_active');
+        this._likeButton.classList.toggle('element__like-button_type_active');
     }
 
     _handleDelete() { // метод удалить карточку 
@@ -19,24 +19,28 @@ export class Card { // создаем класс Card
         return cardElement;
     }
 
-    generateCard() { // генеририруем карточку
-        this._element = this._getTemplate();
-        this._element.querySelector('.element__image').src = this._cardLink;
-        this._element.querySelector('.element__image').alt = this._cardName;
-        this._element.querySelector('.element__title').textContent = this._cardName;
-        this._setEventListeners();
-        return this._element;
-    }
-
     _setEventListeners() { // метод слушателей карточки
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._cardImage.addEventListener('click', () => {
             this._handleImageClick();
         });
-        this._element.querySelector('.element__del-button').addEventListener('click', () => {
+        this._cardDeleteButton.addEventListener('click', () => {
             this._handleDelete();
         });
-        this._element.querySelector('.element__like-button').addEventListener('click', () => {
+        this._likeButton.addEventListener('click', () => {
             this._handleLike();
         });
+    }
+
+    generateCard() { // генеририруем карточку
+        this._element = this._getTemplate();
+        this._likeButton = this._element.querySelector('.element__like-button');
+        this._cardImage = this._element.querySelector('.element__image');
+        this._cardTitle = this._element.querySelector('.element__title');
+        this._cardDeleteButton = this._element.querySelector('.element__del-button');
+        this._cardImage.src = this._cardLink;
+        this._cardImage.alt = this._cardName;
+        this._cardTitle.textContent = this._cardName;
+        this._setEventListeners();
+        return this._element;
     }
 }
