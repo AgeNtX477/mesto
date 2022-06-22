@@ -12,7 +12,8 @@ import {
     submitFormAddNewPlacePopup,
     buttonProfileEdit,
     buttonAddNewPlace,
-    initialCards
+    initialCards,
+    validateObj
 } from '../utils/constants.js';
 
 function createCard(cardName, cardLink) { // добавление карточки в верску через создание экземпляра карточки
@@ -22,15 +23,6 @@ function createCard(cardName, cardLink) { // добавление карточк
     const newCard = listItem.generateCard();
     return newCard;
 }
-
-const validateObj = ({ // параметры для работы функции enableValidation
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-});
 
 // создание экземпляров классов
 
