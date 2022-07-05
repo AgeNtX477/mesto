@@ -57,7 +57,7 @@ export class FormValidator {
         }
     }
 
-    deactivateValidation() { // публичная функция которая делает кнопку не активной и чистит все сообщения об ошибке когда пользователь нажал кнопку закрыть
+    deactivateValidation() { // публичная функция которая делает кнопку не активной и чистит все сообщения об ошибке когда это необходимо
         this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
             this._hideInputError(inputElement);

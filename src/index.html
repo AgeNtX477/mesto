@@ -21,14 +21,15 @@
 
             <section class="profile">
 
-                <img src="<%=require('./images/anakin-avatar.jpg')%>" class="profile__avatar" alt="Скайуокер">
+                <img src="" class="profile__avatar" alt="Аватар пользователя">
+                <button class="profile__avatar-button" type="button"></button>
 
                 <div class="profile__info">
                     <div class="profile__container">
-                        <h1 class="profile__author">Энакин Скайуокер</h1>
+                        <h1 class="profile__author"></h1>
                         <button class="profile__edit-button" type="button"></button>
                     </div>
-                    <h2 class="profile__description">Лучший пилот галактики</h2>
+                    <h2 class="profile__description"></h2>
 
                 </div>
 
@@ -46,6 +47,23 @@
             <p class="footer__copyright">2022 Mesto Russia</p>
 
         </footer>
+        <!-- попап изменения аватара пользователя-->
+        <div class="popup popup_avatar">
+            <div class="popup__avatar-container">
+                <h2 class="popup__heading">Обновить аватар</h2>
+                <form name="avatar-form" class="popup__form popup__form_place_avatar" novalidate>
+                    <fieldset class="popup__form-set">
+                        <input type="url" name="avatar" placeholder="Ссылка на аватар" class="popup__input popup__input_type_avatar" required>
+                        <span class="popup__error popup__error_place_avatar" id="place-avatar"></span>
+                        <button class="popup__submit popup__submit_place_avatar" type="submit">
+                      Сохранить
+                    </button>
+                    </fieldset>
+                </form>
+                <button class="popup__close-button popup__close-button_place_avatar" type="button"></button>
+            </div>
+            <div class="popup__overlay popup__overlay_place_add"></div>
+        </div>
         <!-- попап редактирование профиля -->
         <div class="popup popup_profile-edit">
             <div class="popup__container">
@@ -95,13 +113,30 @@
                 <div class="popup__overlay popup__overlay_place_img-zoomed"></div>
             </div>
         </div>
+        <!-- попап подверждения удаления карточки -->
+        <div class="popup popup_del-confirm">
+            <div class="popup__del-container">
+                <h2 class="popup__heading">Вы уверены?</h2>
+                <form name="confirm-form" class="popup__form popup__form_place_del-confirm" novalidate>
+                    <button class="popup__submit popup__submit_place_del-confirm" type="submit">
+                      Да
+                    </button>
+                </form>
+                <button class="popup__close-button popup__close-button_place_del-confirm" type="button"></button>
+            </div>
+            <div class="popup__overlay popup__overlay_place-del-confirm"></div>
+        </div>
+
         <!-- template element рендеринг карточек -->
         <template id="elements-Box-Content" class="template__card">
                 <article class="element__box">
                 <img src="#" class="element__image" alt="#">
                 <div class="element__stuff">
                     <h2 class="element__title"></h2>
-                    <button class="element__like-button" type="button"></button>
+                    <div class="element__like-container">
+                       <button class="element__like-button" type="button"></button>
+                       <span class="element__like-counter"></span>
+                    </div>
                 </div>
                 <button class="element__del-button" type="button"></button>
             </article>

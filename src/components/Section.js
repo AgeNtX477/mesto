@@ -15,5 +15,4 @@ export class Section { // класс отвечает за отрисовку э
     addItem(element) { // публичный метод который принимает DOM-элемент и добавляет его в контейнер.
         this._container.prepend(element);
     }
-
 }
