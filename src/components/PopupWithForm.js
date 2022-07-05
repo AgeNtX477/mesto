@@ -35,7 +35,7 @@ export class PopupWithForm extends Popup {
         this._form.reset();
     }
 
-    renderLoading(isLoading) {
+    renderLoading(isLoading) { // показываем пользователю что происходит загрузка
         if (isLoading) {
             this._submitButton.textContent = 'Сохранение...'
         } else {

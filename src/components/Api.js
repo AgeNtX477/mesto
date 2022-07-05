@@ -4,80 +4,78 @@ class Api {
         this._baseUrl = baseUrl;
     }
 
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
+        } else {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        };
+    }
+
     getProfile() { // получаем данные пользователя с сервера
         return fetch(`${this._baseUrl}/users/me`, {
-                headers: this._headers
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Ошибка'))
+            headers: this._headers
+        }).then(this._checkResponse)
     }
 
     getInitialCards() { // получаем карточки с сервера
         return fetch(`${this._baseUrl}/cards`, {
-                headers: this._headers
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Ошибка получаения карточек пользователя'))
+            headers: this._headers
+        }).then(this._checkResponse)
     }
 
     editProfile(name, about) { // отправляем на сервер данные пользователя
         return fetch(`${this._baseUrl}/users/me`, {
-                method: "PATCH",
-                headers: this._headers,
-                body: JSON.stringify({
-                    name,
-                    about
-                })
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Ошибка отправки данных пользователя'))
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                about
+            })
+        }).then(this._checkResponse)
     }
 
     addCard(name, link) { // отправляем на сервер новую карточку
         return fetch(`${this._baseUrl}/cards`, {
-                method: "POST",
-                headers: this._headers,
-                body: JSON.stringify({
-                    name,
-                    link
-                })
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Карточка не загрузилась'))
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                link
+            })
+        }).then(this._checkResponse)
     }
 
     deleteCard(id) { // удаляем карточку с сервера
         return fetch(`${this._baseUrl}/cards/${id}`, {
-                method: "DELETE",
-                headers: this._headers,
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Карточка не удалилась'))
+            method: "DELETE",
+            headers: this._headers,
+        }).then(this._checkResponse)
     }
 
     deleteLike(id) { // удаляем свой лукас
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-                method: "DELETE",
-                headers: this._headers,
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Не убрали лайк'))
+            method: "DELETE",
+            headers: this._headers,
+        }).then(this._checkResponse)
     }
 
     putLike(id) { // ставим лукас
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-                method: "PUT",
-                headers: this._headers,
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Не поставили лайк'))
+            method: "PUT",
+            headers: this._headers,
+        }).then(this._checkResponse)
     }
 
     changeAvatar(avatar) { // отправляем на сервер данные пользователя
         return fetch(`${this._baseUrl}/users/me/avatar`, {
-                method: "PATCH",
-                headers: this._headers,
-                body: JSON.stringify({
-                    avatar
-                })
-            }).then(res => res.ok ? res.json() : Promise.reject(res.status))
-            .catch(console.log('Ошибка отправки данных пользователя'))
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar
+            })
+        }).then(this._checkResponse)
     }
-
-
 }
 
 export const api = new Api({

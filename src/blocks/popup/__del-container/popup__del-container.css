@@ -7,3 +7,9 @@
     position: relative;
     z-index: 1;
 }
+
+@media all and (max-width: 578px) {
+    .popup__del-container {
+        width: 282px;
+    }
+}

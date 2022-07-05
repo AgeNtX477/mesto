@@ -7,3 +7,10 @@
     position: relative;
     z-index: 1;
 }
+
+@media all and (max-width: 578px) {
+    .popup__avatar-container {
+        width: 282px;
+        height: 200px;
+    }
+}

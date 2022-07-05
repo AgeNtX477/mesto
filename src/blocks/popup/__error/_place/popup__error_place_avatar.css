@@ -7,5 +7,6 @@
 @media all and (max-width: 578px) {
     .popup__error_place_avatar {
         left: 16px;
+        bottom: 72px;
     }
 }

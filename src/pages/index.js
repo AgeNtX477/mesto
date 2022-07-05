@@ -4,6 +4,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { UserInfo } from '../components/UserInfo.js';
 import { api } from '../components/Api.js';
 import {
@@ -24,6 +25,9 @@ api.getProfile()
     .then(res => {
         userInfo.setUserInfo(res.name, res.about, res.avatar);
         userId = res._id
+    })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
     });
 
 api.getInitialCards()
@@ -34,6 +38,9 @@ api.getInitialCards()
             section.addItem(card)
         })
     })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+    });
 
 function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) { // добавление карточки в верску через создание экземпляра карточки
     const card = new Card(cardName, cardLink, cardLikes, cardId, userId, ownerId, '.template__card', () => {
@@ -47,6 +54,9 @@ function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) { //
                         card.handleDelete();
                         confirmPopup.close()
                     })
+                    .catch((err) => {
+                        console.log(err); // выведем ошибку в консоль
+                    });
             })
         },
         (cardId) => { // проверяем кнопку лайк
@@ -61,6 +71,9 @@ function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) { //
                     .then(res => {
                         card.setLikes(res.likes)
                     })
+                    .catch((err) => {
+                        console.log(err); // выведем ошибку в консоль
+                    });
             }
         }
     );
@@ -89,6 +102,9 @@ const profilePopup = new PopupWithForm('.popup_profile-edit', {
                 userInfo.setUserInfo(res.name, res.about, res.avatar); // значения из интпутов и аватар сохраняем при помощи метода setUserInfo класса UserInfo
                 profilePopup.close();
             })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
             .finally(() => profilePopup.renderLoading(false));
 
     }
@@ -102,6 +118,9 @@ const cardAddPopup = new PopupWithForm('.popup_img-add', {
                 const card = createCard(res.name, res.link, res.likes, res._id, userId, res.owner._id);
                 section.addItem(card); // добавляем карточку методом addItem класса Section
                 cardAddPopup.close()
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
             })
             .finally(() => cardAddPopup.renderLoading(false));
     }
@@ -117,11 +136,14 @@ const userAvatarPopup = new PopupWithForm('.popup_avatar', {
                 });
                 userAvatarPopup.close();
             })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
             .finally(() => userAvatarPopup.renderLoading(false));
     }
 });
 
-const confirmPopup = new PopupWithForm('.popup_del-confirm', { renderer: null })
+const confirmPopup = new PopupWithForm('.popup_del-confirm', { renderer: null });
 
 // подписки для закрытия модальных окно
 
@@ -158,7 +180,7 @@ buttonAddNewPlace.addEventListener('click', () => { // слушатель кно
 
 buttonProfileAvatar.addEventListener('click', () => {
     userAvatarPopup.open();
-    /*  validateUserAvatar.deactivateValidation() */ // чистим ошибки валидации и выключаем кнопку
+    validateUserAvatar.deactivateValidation(); // чистим ошибки валидации и выключаем кнопку
 });
 
 const validateProfileEdit = new FormValidator(validateObj, submitFormProfileEditPopup); // создаем дубликат FormValidator редактирования профиля
@@ -168,4 +190,4 @@ const validateCardAdd = new FormValidator(validateObj, submitFormAddNewPlacePopu
 validateCardAdd.enableValidation(); // запускаем валидацию для добавления новой карточки
 
 const validateUserAvatar = new FormValidator(validateObj, submitFormUserAvatarPopup); // создаем дубликат FormValidator аватара пользователя
-validateUserAvatar.enableValidation(); // запускаем валидацию для аватара */
+validateUserAvatar.enableValidation(); // запускаем валидацию для аватара

@@ -20,10 +20,10 @@
         <main>
 
             <section class="profile">
-
-                <img src="" class="profile__avatar" alt="Аватар пользователя">
-                <button class="profile__avatar-button" type="button"></button>
-
+                <div class="profile__user-container">
+                    <img src="" class="profile__avatar" alt="Аватар пользователя">
+                    <button class="profile__avatar-button" type="button"></button>
+                </div>
                 <div class="profile__info">
                     <div class="profile__container">
                         <h1 class="profile__author"></h1>
@@ -54,7 +54,7 @@
                 <form name="avatar-form" class="popup__form popup__form_place_avatar" novalidate>
                     <fieldset class="popup__form-set">
                         <input type="url" name="avatar" placeholder="Ссылка на аватар" class="popup__input popup__input_type_avatar" required>
-                        <span class="popup__error popup__error_place_avatar" id="place-avatar"></span>
+                        <span class="popup__error popup__error_place_avatar" id="avatar-error"></span>
                         <button class="popup__submit popup__submit_place_avatar" type="submit">
                       Сохранить
                     </button>

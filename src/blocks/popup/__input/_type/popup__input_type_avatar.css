@@ -10,5 +10,6 @@
 @media all and (max-width: 578px) {
     .popup__input_type_avatar {
         left: 22px;
+        bottom: 87px;
     }
 }
