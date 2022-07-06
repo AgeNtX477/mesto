@@ -143,7 +143,13 @@ const userAvatarPopup = new PopupWithForm('.popup_avatar', {
     }
 });
 
-const confirmPopup = new PopupWithConfirmation('.popup_del-confirm');
+const confirmPopup = new PopupWithConfirmation('.popup_del-confirm', {
+    handleSubmit: (data) => { // не понимаю как тут нужно вызывать...
+
+
+
+    }
+});
 
 // подписки для закрытия модальных окно
 
