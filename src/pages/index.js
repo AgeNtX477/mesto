@@ -33,7 +33,6 @@ api.getProfile()
 api.getInitialCards()
     .then(cardList => {
         cardList.forEach(data => {
-            cardList.reverse(data)
             const card = createCard(data.name, data.link, data.likes, data._id, userId, data.owner._id)
             section.addItem(card)
         })
