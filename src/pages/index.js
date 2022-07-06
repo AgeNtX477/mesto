@@ -42,7 +42,7 @@ api.getInitialCards()
         console.log(err); // выведем ошибку в консоль
     });
 
-function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) { // добавление карточки в верску через создание экземпляра карточки
+function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) {
     const card = new Card(cardName, cardLink, cardLikes, cardId, userId, ownerId, '.template__card', () => {
             imagePopup.open(cardName, cardLink); // открываем просмотр изображения
         },
@@ -143,13 +143,7 @@ const userAvatarPopup = new PopupWithForm('.popup_avatar', {
     }
 });
 
-const confirmPopup = new PopupWithConfirmation('.popup_del-confirm', {
-    handleSubmit: (data) => { // не понимаю как тут нужно вызывать...
-
-
-
-    }
-});
+const confirmPopup = new PopupWithConfirmation('.popup_del-confirm');
 
 // подписки для закрытия модальных окно
 
