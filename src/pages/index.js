@@ -65,6 +65,9 @@ function createCard(cardName, cardLink, cardLikes, cardId, userId, ownerId) {
                     .then(res => {
                         card.setLikes(res.likes)
                     })
+                    .catch((err) => {
+                        console.log(err); // выведем ошибку в консоль
+                    });
             } else {
                 api.putLike(cardId)
                     .then(res => {
