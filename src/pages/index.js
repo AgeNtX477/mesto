@@ -21,17 +21,11 @@ import {
     submitFormUserAvatarPopup
 } from '../utils/constants.js';
 
-api.getProfile()
-    .then(res => {
-        userInfo.setUserInfo(res.name, res.about, res.avatar);
-        userId = res._id
-    })
-    .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-    });
-
-api.getInitialCards()
-    .then(cardList => {
+Promise.all([api.getProfile(), api.getInitialCards()])
+    .then(([userData, cardList]) => {
+        userId = userData._id;
+        userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
+        cardList.reverse();
         cardList.forEach(data => {
             const card = createCard(data.name, data.link, data.likes, data._id, userId, data.owner._id)
             section.addItem(card)
