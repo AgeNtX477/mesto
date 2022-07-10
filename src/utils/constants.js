@@ -6,11 +6,7 @@ export const submitFormUserAvatarPopup = document.querySelector('.popup__form_pl
 export const buttonProfileEdit = document.querySelector('.profile__edit-button'); // кнопка редактирования профиля
 export const buttonAddNewPlace = document.querySelector('.profile__add-button'); // кнопка добавления нового места
 export const buttonProfileAvatar = document.querySelector('.profile__avatar-button'); // кнопка смены аватара пользователя
-
-export let userId; // создадим пустую переменную idUser
-
 export const initialCards = [];
-
 export const validateObj = ({ // параметры для работы функции enableValidation
     formSelector: '.popup__form',
     inputSelector: '.popup__input',

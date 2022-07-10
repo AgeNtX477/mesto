@@ -17,9 +17,10 @@ import {
     buttonProfileAvatar,
     initialCards,
     validateObj,
-    userId,
     submitFormUserAvatarPopup
 } from '../utils/constants.js';
+
+let userId; // создадим пустую переменную userId
 
 Promise.all([api.getProfile(), api.getInitialCards()])
     .then(([userData, cardList]) => {
