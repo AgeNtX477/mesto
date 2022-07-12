@@ -23,7 +23,8 @@
 .element__like-button{background-color:transparent;background-image:url(0e390048c288271ab07f.svg);background-repeat:no-repeat;border:none;cursor:pointer;height:19px;margin-left:10px;margin-right:20px;outline:none;transition:.3s;width:22px}.element__like-button:hover{opacity:.5}
 .element__like-counter{color:#000;font-size:13px;font-weight:400;height:19px;line-height:1.21;margin-left:10px;margin-right:20px;max-width:30px;overflow:hidden;padding-top:5px;text-align:center;text-overflow:ellipsis;white-space:nowrap}
 .element__like-button_type_active{background-image:url(35948469632d0421d697.svg)}
-.element__del-button{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-repeat:no-repeat;border:none;cursor:pointer;height:19px;outline:none;position:absolute;right:20px;top:20px;transition:.3s;width:18px}.element__del-button:hover{opacity:.5}
+.element__del-button_visible{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-repeat:no-repeat;border:none;cursor:pointer;height:19px;outline:none;position:absolute;right:20px;top:20px;transition:.3s;width:18px}.element__del-button_visible:hover{opacity:.5}
+.element__del-button_hidden{display:none}
 .footer{margin:0 auto;max-width:880px;padding-bottom:60px;padding-top:67px}@media (max-width:880px){.footer{margin:0 0 0 19px;padding-bottom:36px;padding-top:48px}}
 .footer__copyright{color:#545454;font-size:18px;font-style:normal;font-weight:400;line-height:1.22;margin:0 auto}
 
