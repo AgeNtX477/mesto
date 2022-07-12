@@ -63,14 +63,14 @@ export class Card { // создаем класс Card
         this._likeButton = this._element.querySelector('.element__like-button');
         this._cardImage = this._element.querySelector('.element__image');
         this._cardTitle = this._element.querySelector('.element__title');
-        this._cardDeleteButton = this._element.querySelector('.element__del-button');
+        this._cardDeleteButton = this._element.querySelector('.element__del-button_visible');
         this._cardImage.src = this._cardLink;
         this._cardImage.alt = this._cardName;
         this._cardTitle.textContent = this._cardName;
         this._setEventListeners();
         this.setLikes(this._cardLikes);
         if (this._userId !== this._ownerId) { // в карточке скрываем "мусорку" если карточка была создана не нами.
-            this._cardDeleteButton.style.display = 'none'
+            this._cardDeleteButton.classList.add('element__del-button_hidden') // добавляем класс со свойством display none
         }
         return this._element;
     }

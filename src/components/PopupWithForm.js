@@ -18,10 +18,6 @@ export class PopupWithForm extends Popup {
         return values;
     }
 
-    /* changeSubmitHandler(newSubmitHandler) {
-        this._handleSubmit = newSubmitHandler;
-    } */
-
     setEventListeners() { // слушаем сабмиты форм
         super.setEventListeners();
         this._form.addEventListener('submit', (evt) => {

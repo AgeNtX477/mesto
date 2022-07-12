@@ -1,4 +1,4 @@
-.element__del-button {
+.element__del-button_visible {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -11,9 +11,8 @@
     background-repeat: no-repeat;
     transition: .3s;
     cursor: pointer;
-    /* mix-blend-mode: difference; */
 }
 
-.element__del-button:hover {
+.element__del-button_visible:hover {
     opacity: .5;
 }
